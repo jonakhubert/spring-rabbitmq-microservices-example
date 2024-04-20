@@ -7,9 +7,14 @@
   <groupId>com.mycompany</groupId>
   <artifactId>companyservices</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
   <name>companyservices</name>
   <url>http://www.example.com</url>
+
+  <modules>
+    <module>employee-service</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
