@@ -4,3 +4,6 @@ server:
 spring:
   application:
     name: employee-service
+  data:
+    mongodb:
+      uri: mongodb://admin:1234@localhost:27017/companyservices?authSource=admin
