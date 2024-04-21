@@ -8,6 +8,6 @@ public interface EmployeeService {
     List<Employee> getAllEmployees();
     Employee getEmployee(String id);
     Employee saveEmployee(Employee employee);
-    Employee deleteEmployee(Employee employee);
+    void deleteEmployee(String id);
     Page<Employee> getEmployeesPage(int pageSize, int pageNumber, String sortField, String sortDirection);
 }
