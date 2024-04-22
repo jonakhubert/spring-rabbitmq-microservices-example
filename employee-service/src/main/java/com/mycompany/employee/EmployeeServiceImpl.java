@@ -4,30 +4,33 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final EmployeeDTOMapper employeeDTOMapper;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, EmployeeDTOMapper employeeDTOMapper) {
         this.employeeRepository = employeeRepository;
+        this.employeeDTOMapper = employeeDTOMapper;
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeRepository.findAll().stream().map(employeeDTOMapper).collect(Collectors.toList());
     }
 
     @Override
-    public Employee getEmployee(String id) {
-        return employeeRepository.findById(id)
+    public EmployeeDTO getEmployee(String id) {
+        return employeeRepository.findById(id).map(employeeDTOMapper)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
     }
 
     @Override
-    public Employee saveEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public void saveEmployee(Employee employee) {
+        employeeRepository.save(employee);
     }
 
     @Override
@@ -36,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Page<Employee> getEmployeesPage(int pageSize, int pageNumber, String sortField, String sortDirection) {
+    public Page<EmployeeDTO> getEmployeesPage(int pageSize, int pageNumber, String sortField, String sortDirection) {
         return null;
     }
 }
