@@ -14,7 +14,7 @@ public class Task implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private String id;
+    private int id;
 
     @Column(name = "title")
     private String title;
@@ -46,8 +46,25 @@ public class Task implements Serializable {
     @Column(name = "updated_date")
     private Timestamp updatedDate;
 
+    public Task() {}
+
+    public Task(int id, String title, String description, String notes, String assignee, Timestamp startDate,
+            TaskStatus status, PriorityType priority, Timestamp createdDate, Timestamp updatedDate
+    ) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.notes = notes;
+        this.assignee = assignee;
+        this.startDate = startDate;
+        this.status = status;
+        this.priority = priority;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
+
     // getters
-    public String getId() { return id; }
+    public int getId() { return id; }
     public String getTitle() { return title; }
     public String getDescription() { return description; }
     public String getNotes() { return notes; }
