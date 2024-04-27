@@ -10,14 +10,14 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/tasks")
 public class TaskController {
 
-    private TaskService taskService;
+    private final TaskService taskService;
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @PostMapping
-    public ResponseEntity<Void> addTask(Task task) {
+    public ResponseEntity<Void> addTask(@RequestBody Task task) {
         taskService.saveTask(task);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

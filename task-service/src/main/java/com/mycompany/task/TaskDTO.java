@@ -3,7 +3,7 @@ package com.mycompany.task;
 import java.sql.Timestamp;
 
 public record TaskDTO(
-    String id,
+    int id,
     String title,
     String description,
     String notes,

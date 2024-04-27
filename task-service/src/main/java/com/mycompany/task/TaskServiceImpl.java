@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 @Service
 public class TaskServiceImpl implements TaskService {
 
-    private TaskRepository taskRepository;
-    private TaskDTOMapper taskDTOMapper;
+    private final TaskRepository taskRepository;
+    private final TaskDTOMapper taskDTOMapper;
 
     public TaskServiceImpl(TaskRepository taskRepository, TaskDTOMapper taskDTOMapper) {
         this.taskRepository = taskRepository;
