@@ -29,8 +29,6 @@ services:
     volumes:
       - mysql:/data
     environment:
-      MYSQL_USER: user
-      MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: 1234
 
   elasticsearch:
@@ -38,9 +36,10 @@ services:
     container_name: elasticsearch
     ports:
       - '9200:9200'
-      - '9300:9300'
     environment:
-      discovery.type: single-node
+      - node.name=elasticsearch
+      - xpack.security.enabled=false
+      - discovery.type=single-node
 
 volumes:
   mongo: {}
