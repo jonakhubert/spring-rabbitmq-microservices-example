@@ -2,8 +2,6 @@ package com.mycompany.taskdetail;
 
 import com.mycompany.task.PriorityType;
 import com.mycompany.task.TaskStatus;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -15,7 +13,7 @@ public class TaskDetail implements Serializable {
 
     @Id
     private String id;
-    private int employeeId;
+    private String employeeId;
     private String employeeFirstName;
     private String employeeLastName;
     private String taskTitle;
@@ -25,7 +23,7 @@ public class TaskDetail implements Serializable {
 
     public TaskDetail() {}
 
-    public TaskDetail(String id, int employeeId, String employeeFirstName, String employeeLastName, String taskTitle,
+    public TaskDetail(String id, String employeeId, String employeeFirstName, String employeeLastName, String taskTitle,
                       String taskDescription, TaskStatus taskStatus, PriorityType taskPriority
     ) {
         this.id = id;
@@ -40,7 +38,7 @@ public class TaskDetail implements Serializable {
 
     // getters
     public String getId() { return id; }
-    public int getEmployeeId() { return employeeId; }
+    public String getEmployeeId() { return employeeId; }
     public String getEmployeeFirstName() { return employeeFirstName; }
     public String getEmployeeLastName() { return employeeLastName; }
     public String getTaskTitle() { return taskTitle; }
@@ -50,7 +48,7 @@ public class TaskDetail implements Serializable {
 
     // setters
     public void setId(String id) { this.id = id; }
-    public void setEmployeeId(int employeeId) { this.employeeId = employeeId; }
+    public void setEmployeeId(String employeeId) { this.employeeId = employeeId; }
     public void setEmployeeFirstName(String employeeFirstName) { this.employeeFirstName = employeeFirstName; }
     public void setEmployeeLastName(String employeeLastName) { this.employeeLastName = employeeLastName; }
     public void setTaskTitle(String taskTitle) { this.taskTitle = taskTitle; }
