@@ -91,7 +91,7 @@ public class Task implements Serializable {
         if (this == o) return true;
         if (!(o instanceof Task other)) return false;
 
-        return Objects.equals(id, other.id) &&
+        return id == other.id &&
                Objects.equals(title, other.title) &&
                Objects.equals(description, other.description) &&
                Objects.equals(notes, other.notes) &&
