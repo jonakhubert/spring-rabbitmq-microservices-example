@@ -41,6 +41,15 @@ services:
       - xpack.security.enabled=false
       - discovery.type=single-node
 
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=1234
+
 volumes:
   mongo: {}
   postgres: {}
