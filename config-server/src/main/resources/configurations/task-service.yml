@@ -14,6 +14,14 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    host: localhost
+    port: '5672'
+    username: admin
+    password: 1234
+    queue: notification-queue
+    exchange: notification-exchange
+    routingKey: notification-key
   jpa:
     show-sql: true
     hibernate:
@@ -27,5 +35,8 @@ spring:
       cluster-nodes: localhost:9200
       repositories:
         enabled: true
+  threads:
+    virtual:
+      enabled: true
   connections:
     employee-base-url: http://localhost:8081/api/v1/employees
