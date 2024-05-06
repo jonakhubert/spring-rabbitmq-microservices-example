@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    register-with-eureka: false
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: employee-service
+          uri: lb://employee-service
+          predicates:
+            - Path=/api/v1/employees/**
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/v1/notifications/**
+        - id: task-service
+          uri: lb://task-service
+          predicates:
+            - Path=/api/v1/tasks/**
+        - id: task-service
+          uri: lb://task-service
+          predicates:
+            - Path=/api/v1/task-details/**
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
